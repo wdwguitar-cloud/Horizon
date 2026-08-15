@@ -18,15 +18,15 @@
     "default_profile": "tech-news",
     "profile_settings": {
       "tech-news": {
-        "threshold": 6.8,
+        "threshold": 6.2,
         "topic_dedup": true
       },
       "tech-blog": {
-        "threshold": 5.6,
+        "threshold": 5.0,
         "topic_dedup": true
       },
       "ai-creator": {
-        "threshold": 5.2,
+        "threshold": 4.4,
         "topic_dedup": true
       }
     }
@@ -76,8 +76,8 @@
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 18,
-      "min_score": 140,
+      "fetch_top_stories": 24,
+      "min_score": 110,
       "category": "ai-community",
       "profile": "tech-news"
     },
@@ -102,6 +102,13 @@
         "enabled": true,
         "category": "ai-news",
         "profile": "tech-news"
+      },
+      {
+        "name": "AI 工具与效率产品",
+        "url": "https://news.google.com/rss/search?q=AI%20tools%20OR%20AI%E5%B7%A5%E5%85%B7%20OR%20AI%20productivity%20OR%20AI%20workflow&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "ai-creator"
       },
       {
         "name": "AI 写作与内容创作",
@@ -137,6 +144,13 @@
         "enabled": true,
         "category": "global-growth",
         "profile": "ai-creator"
+      },
+      {
+        "name": "AI 电商与独立站增长",
+        "url": "https://news.google.com/rss/search?q=AI%20ecommerce%20OR%20AI%E7%8B%AC%E7%AB%8B%E7%AB%99%20OR%20AI%20shopify%20OR%20AI%E5%95%86%E5%93%81%E8%B6%8B%E5%8A%BF&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+        "enabled": true,
+        "category": "global-growth",
+        "profile": "ai-creator"
       }
     ],
     "reddit": {
@@ -147,8 +161,8 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 12,
-          "min_score": 40,
+          "fetch_limit": 15,
+          "min_score": 20,
           "category": "ai-news",
           "profile": "tech-news"
         },
@@ -157,8 +171,8 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 12,
-          "min_score": 35,
+          "fetch_limit": 15,
+          "min_score": 20,
           "category": "creator-growth",
           "profile": "ai-creator"
         }
@@ -202,10 +216,10 @@
     }
   },
   "collection": {
-    "time_window_hours": 48
+    "time_window_hours": 60
   },
   "digest": {
-    "max_items": 10,
+    "max_items": 12,
     "profile_order": [
       "ai-creator",
       "tech-news",
@@ -223,7 +237,7 @@
       },
       "creator_growth": {
         "name": "内容与出海",
-        "limit": 4,
+        "limit": 5,
         "categories": [
           "creator-growth",
           "global-growth"
@@ -231,7 +245,7 @@
       },
       "core_ai": {
         "name": "AI 核心动态",
-        "limit": 3,
+        "limit": 4,
         "categories": [
           "ai-news",
           "ai-community",
@@ -240,7 +254,7 @@
       }
     },
     "default_group": "other",
-    "default_group_limit": 1
+    "default_group_limit": 2
   },
   "webhook": {
     "enabled": true,
