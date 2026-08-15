@@ -8,26 +8,25 @@
     "max_tokens": 8192,
     "throttle_sec": 1,
     "languages": [
-      "zh",
-      "en"
+      "zh"
     ],
-    "analysis_concurrency": 5,
-    "enrichment_concurrency": 5
+    "analysis_concurrency": 4,
+    "enrichment_concurrency": 3
   },
   "processing": {
     "profiles_dir": "profiles",
     "default_profile": "tech-news",
     "profile_settings": {
       "tech-news": {
-        "threshold": 7.0,
+        "threshold": 7.2,
         "topic_dedup": true
       },
       "tech-blog": {
-        "threshold": 4.0,
-        "topic_dedup": false
+        "threshold": 5.2,
+        "topic_dedup": true
       },
-      "finance-news": {
-        "threshold": 7.0,
+      "ai-creator": {
+        "threshold": 6.6,
         "topic_dedup": true
       }
     }
@@ -35,23 +34,27 @@
   "sources": {
     "github": [
       {
-        "type": "user_events",
-        "username": "karpathy",
+        "type": "repo_releases",
+        "owner": "langgenius",
+        "repo": "dify",
         "enabled": true,
-        "profile": "tech-news"
+        "category": "ai-tools",
+        "profile": "ai-creator"
       },
       {
         "type": "repo_releases",
-        "owner": "vllm-project",
-        "repo": "vllm",
+        "owner": "n8n-io",
+        "repo": "n8n",
         "enabled": true,
-        "profile": "tech-news"
+        "category": "automation",
+        "profile": "ai-creator"
       },
       {
         "type": "repo_releases",
-        "owner": "sgl-project",
-        "repo": "sglang",
+        "owner": "microsoft",
+        "repo": "autogen",
         "enabled": true,
+        "category": "ai-agents",
         "profile": "tech-news"
       },
       {
@@ -59,13 +62,23 @@
         "owner": "triton-lang",
         "repo": "triton",
         "enabled": true,
+        "category": "llm-infra",
+        "profile": "tech-news"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "vllm-project",
+        "repo": "vllm",
+        "enabled": true,
+        "category": "llm-infra",
         "profile": "tech-news"
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 30,
-      "min_score": 150,
+      "fetch_top_stories": 25,
+      "min_score": 120,
+      "category": "ai-community",
       "profile": "tech-news"
     },
     "rss": [
@@ -77,22 +90,6 @@
         "profile": "tech-news"
       },
       {
-        "name": "vLLM Blog",
-        "url": "https://vllm.ai/blog/rss.xml",
-        "enabled": true,
-        "category": "llm-inference",
-        "profile": "tech-blog",
-        "content_extractor": "trafilatura"
-      },
-      {
-        "name": "CNBC Finance",
-        "url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664",
-        "enabled": true,
-        "category": "finance",
-        "profile": "finance-news",
-        "content_extractor": "trafilatura"
-      },
-      {
         "name": "GitHub Trending - Daily",
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
         "enabled": true,
@@ -100,44 +97,53 @@
         "profile": "tech-news"
       },
       {
-        "name": "Semianalysis",
-        "url": "https://newsletter.semianalysis.com/feed",
+        "name": "传统文化与命理 x AI",
+        "url": "https://news.google.com/rss/search?q=AI%20OR%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E5%9B%BD%E5%AD%A6%20%E5%91%BD%E7%90%86%20%E4%BC%A0%E7%BB%9F%E6%96%87%E5%8C%96%20%E5%91%A8%E6%98%93%20AI%E6%8E%92%E7%9B%98&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
         "enabled": true,
-        "category": "semiconductors",
-        "profile": "tech-news"
+        "category": "trad-culture",
+        "profile": "ai-creator"
       },
       {
-        "name": "LWN.net",
-        "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
+        "name": "课程私域短视频增长 x AI",
+        "url": "https://news.google.com/rss/search?q=AI%20OR%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20%E8%AF%BE%E7%A8%8B%20%E7%A7%81%E5%9F%9F%20%E7%9F%AD%E8%A7%86%E9%A2%91%20%E5%BC%95%E6%B5%81%20%E5%8F%98%E7%8E%B0%20%E7%9F%A5%E8%AF%86%E5%8D%9A%E4%B8%BB&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
         "enabled": true,
-        "category": "linux-kernel",
-        "profile": "tech-news"
+        "category": "creator-growth",
+        "profile": "ai-creator"
+      },
+      {
+        "name": "跨境玄学与亚马逊观察",
+        "url": "https://news.google.com/rss/search?q=%E7%8E%84%E5%AD%A6%E5%87%BA%E6%B5%B7%20OR%20%E8%B7%A8%E5%A2%83%E7%8E%84%E5%AD%A6%20OR%20%E8%B7%A8%E5%A2%83%E7%AE%97%E5%91%BD%20OR%20%E4%BA%9A%E9%A9%AC%E9%80%8A%20%E4%BC%A0%E7%BB%9F%E6%96%87%E5%8C%96&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+        "enabled": true,
+        "category": "cross-border",
+        "profile": "ai-creator"
       }
     ],
     "reddit": {
       "enabled": true,
       "subreddits": [
         {
-          "subreddit": "MachineLearning",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 60,
-          "profile": "tech-news"
-        },
-        {
           "subreddit": "LocalLLaMA",
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
           "fetch_limit": 10,
-          "min_score": 60,
+          "min_score": 80,
+          "category": "ai-community",
           "profile": "tech-news"
+        },
+        {
+          "subreddit": "ChatGPT",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 100,
+          "category": "creator-growth",
+          "profile": "ai-creator"
         }
       ],
       "users": [],
-      "fetch_comments": 10
+      "fetch_comments": 5
     },
     "telegram": {
       "enabled": true,
@@ -145,25 +151,76 @@
         {
           "channel": "zaihuapd",
           "enabled": true,
-          "fetch_limit": 20,
-          "profile": ["tech-news", "finance-news"]
+          "fetch_limit": 15,
+          "category": "ai-news",
+          "profile": "tech-news"
         }
       ]
+    },
+    "ossinsight": {
+      "enabled": true,
+      "period": "past_24_hours",
+      "languages": [
+        "All",
+        "Python",
+        "TypeScript"
+      ],
+      "keywords": [
+        "agent",
+        "workflow",
+        "automation",
+        "video",
+        "content"
+      ],
+      "min_stars": 20,
+      "max_items": 20,
+      "category": "oss-trending",
+      "profile": "ai-creator"
     }
   },
   "collection": {
     "time_window_hours": 24
   },
   "digest": {
-    "max_items": null,
+    "max_items": 16,
     "profile_order": [
+      "ai-creator",
       "tech-news",
-      "tech-blog",
-      "finance-news"
+      "tech-blog"
     ],
-    "category_groups": {},
+    "category_groups": {
+      "business": {
+        "name": "内容与增长",
+        "limit": 6,
+        "categories": [
+          "creator-growth",
+          "automation",
+          "ai-tools",
+          "oss-trending"
+        ]
+      },
+      "culture": {
+        "name": "传统文化与跨境",
+        "limit": 5,
+        "categories": [
+          "trad-culture",
+          "cross-border"
+        ]
+      },
+      "core_ai": {
+        "name": "AI 核心动态",
+        "limit": 5,
+        "categories": [
+          "ai-community",
+          "ai-news",
+          "ai-agents",
+          "llm-infra",
+          "github-trending"
+        ]
+      }
+    },
     "default_group": "other",
-    "default_group_limit": null
+    "default_group_limit": 2
   },
   "webhook": {
     "enabled": true,
