@@ -1,0 +1,92 @@
+{
+  "title": "传统文化行业观察",
+  "timezone": "Asia/Shanghai",
+  "lookback_hours": 72,
+  "max_items": 12,
+  "max_per_query": 8,
+  "ai": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  },
+  "queries": [
+    {
+      "id": "core_trad_ai",
+      "name": "传统文化与命理核心词",
+      "query": "\"命理\" OR \"国学\" OR \"周易\" OR \"AI排盘\" OR \"择日\" OR \"择吉\" OR \"算命\" OR \"玄学\"",
+      "priority": "core"
+    },
+    {
+      "id": "customs_region",
+      "name": "风俗与地域文化",
+      "query": "\"风俗\" OR \"习俗\" OR \"岭南文化\" OR \"两广文化\" OR \"婚丧嫁娶\"",
+      "priority": "core"
+    },
+    {
+      "id": "content_growth",
+      "name": "内容增长与转化",
+      "query": "(\"命理\" OR \"国学\" OR \"玄学\" OR \"传统文化\") (\"课程\" OR \"私域\" OR \"短视频\" OR \"引流\" OR \"变现\" OR \"婚姻\" OR \"财运\" OR \"事业运势\")",
+      "priority": "scenario"
+    },
+    {
+      "id": "cross_border",
+      "name": "跨境与出海观察",
+      "query": "\"玄学出海\" OR \"跨境玄学\" OR \"跨境算命\" OR \"亚马逊 传统文化\" OR \"东方文化\"",
+      "priority": "scenario"
+    },
+    {
+      "id": "risk_watch",
+      "name": "灰度与行业统计",
+      "query": "\"黑五类\" OR \"黑灰色产业\" OR \"玄学行业数据统计\" OR \"玄学 行业 数据\"",
+      "priority": "risk"
+    }
+  ],
+  "keyword_layers": {
+    "core": [
+      "命理",
+      "国学",
+      "周易",
+      "AI排盘",
+      "择日",
+      "择吉",
+      "算命",
+      "玄学",
+      "风俗",
+      "习俗",
+      "岭南文化",
+      "两广文化"
+    ],
+    "scenario": [
+      "婚姻",
+      "财运",
+      "事业运势",
+      "婚丧嫁娶",
+      "课程",
+      "私域",
+      "短视频",
+      "引流",
+      "变现",
+      "知识博主",
+      "玄学出海",
+      "跨境玄学",
+      "跨境算命",
+      "亚马逊"
+    ],
+    "risk": [
+      "黑五类",
+      "黑灰色产业",
+      "玄学行业数据统计",
+      "道长"
+    ]
+  },
+  "exclude_keywords": [
+    "星座运势",
+    "塔罗牌",
+    "小说",
+    "电视剧",
+    "电影",
+    "游戏",
+    "抽卡",
+    "二次元"
+  ]
+}
